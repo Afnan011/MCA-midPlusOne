@@ -1,0 +1,4 @@
+course list = https://drive.google.com/file/d/18fQsmekL747RQL0BbBRvgU6Dx7NeTJuI/view
+google forms = https://docs.google.com/forms/d/e/1FAIpQLSeUfHruFGMltWy6G88990Aqf0Yw82_rZoFvTZy_0gcAehml2g/viewform
+
+https://giridharcp.github.io/nptel
