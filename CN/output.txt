@@ -1,0 +1,135 @@
+1) CRC - 12
+
+
+                ===== TRANSMITTER SIDE =====
+
+ Enter the data word length : 15
+
+ Enter Data word : 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+ Enter generator length : 13
+
+ Enter the generator : 1 1 0 0 0 0 0 0 0 1 1 1 1
+
+ Data word with zeros appended : 11111111111111100000000000
+ Reminder is : 100111100011
+ The  code word to be transmitted :  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  0  0  1  1  1  1  0  0  0  1  1 
+
+                ===== RECEIVER SIDE ===== 
+
+
+ Enter the received codeword : 1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  0  0  1  1  1  1  0  0  0  1  1
+
+ Reminder is :  0  0  0  0  0  0  0  0  0  0  0  0 
+ Received code word has no error 
+
+
+
+ 2) CRC - 16
+
+
+
+                ===== TRANSMITTER SIDE =====
+
+ Enter the data word length : 15
+
+ Enter Data word : 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+ Enter generator length : 16
+
+ Enter the generator : 1 1 0 0 0 0 0 0 0 0 0 0 0 0 1  1
+
+ Data word with zeros appended : 11111111111111100000000000000
+ Reminder is : 111111111111100
+ The  code word to be transmitted :  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  0  0 
+
+                ===== RECEIVER SIDE ===== 
+
+
+ Enter the received codeword : 1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  0  0
+
+ Reminder is :  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
+ Received code word has no error 
+
+
+
+ 3)CRC CCIP
+
+
+                ===== TRANSMITTER SIDE =====
+
+ Enter the data word length : 15
+
+ Enter Data word : 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+ Enter generator length : 16
+
+ Enter the generator : 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1
+
+ Data word with zeros appended : 11111111111111100000000000000
+ Reminder is : 100011100000111
+ The  code word to be transmitted :  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  0  0  0  1  1  1  0  0  0  0  0  1  1  1 
+
+                ===== RECEIVER SIDE ===== 
+
+
+ Enter the received codeword : 1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  0  0  0  1  1  1  0  0  0  0  0  1  1  1
+
+ Reminder is :  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
+ Received code word has no error 
+
+
+
+
+ With error
+ 1)CRC- CCIP
+    
+
+                ===== TRANSMITTER SIDE =====
+
+ Enter the data word length : 15
+
+ Enter Data word : 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+ Enter generator length : 16
+
+ Enter the generator : 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1
+
+ Data word with zeros appended : 11111111111111100000000000000
+ Reminder is : 100011100000111
+ The  code word to be transmitted :  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  0  0  0  1  1  1  0  0  0  0  0  1  1  1 
+
+                ===== RECEIVER SIDE ===== 
+
+
+ Enter the received codeword : 1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  0  0  0  1  1  1  0  0  0  0  0  1  1  0 
+
+ Reminder is :  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1 
+ Received code word has an error 
+
+
+ 2)CRC-12
+
+ 
+
+                ===== TRANSMITTER SIDE =====
+
+ Enter the data word length : 15
+
+ Enter Data word : 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+ Enter generator length : 13
+
+ Enter the generator : 1 1 0 0 0 0 0 0 0 0 0 0 0 0 1  1
+
+ Data word with zeros appended : 11111111111111100000000000
+ Reminder is : 100000000000
+ The  code word to be transmitted :  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  0  0  0  0  0  0  0  0  0  0  0 
+
+                ===== RECEIVER SIDE ===== 
+
+
+ Enter the received codeword : 1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  0  0  0  0  0  0  0  0  0  0  1    
+
+ Reminder is :  1  1  1  1  0  0  0  0  0  0  0  0 
+ Received code word has an error

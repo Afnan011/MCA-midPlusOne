@@ -1,112 +1,99 @@
-#include<stdio.h>
-
-void divide(int,int,int [20],int [20]);
+#include <stdio.h>
+void divide(int, int, int[40], int[40]);
 
 void main()
 {
-    int dwlen,cwlen,glen,i,j,error;
-    int dataword[20],codeword[40],gen[20];
-    int rcodeword[40],rdataword[20];
+    int dwLen, cwLen, gLen, i, j, error;
+    int dataWord[40], codeWord[40], gen[40];
+    int rCodeWord[40];
 
-    printf("\n Transmitter side\n\n");
-    printf("Enter the length of dataword:");
-    scanf("%d",&dwlen);
-    printf("Enter the dataword:");
-    for(i=0;i<dwlen;i++)
+    printf("\n \t\t===== TRANSMITTER SIDE =====\n");
+
+    printf("\n Enter the data word length : ");
+    scanf("%d", &dwLen);
+
+    printf("\n Enter Data word : ");
+    for (i = 0; i < dwLen; i++)
+        scanf("%d", &dataWord[i]);
+
+    printf("\n Enter generator length : ");
+    scanf("%d", &gLen);
+
+    printf("\n Enter the generator : ");
+    for (i = 0; i < gLen; i++)
+        scanf("%d", &gen[i]);
+    // codeword length
+    cwLen = dwLen + (gLen - 1);
+
+    // append zeros
+    for (i = dwLen; i < cwLen; i++)
+        dataWord[i] = 0;
+
+    printf("\n Data word with zeros appended : ");
+    for (i = 0; i < cwLen; i++)
+        printf("%d", dataWord[i]);
+
+    // copy data word to code word
+    for (i = 0; i < cwLen; i++)
+        codeWord[i] = dataWord[i];
+        
+    // divide
+    divide(dwLen, gLen, dataWord, gen);
+
+    printf("\n Reminder is : ");
+    for (i = dwLen; i < cwLen; i++)
+        printf("%d", dataWord[i]);
+
+    // append the remainder to end of dataword
+    for (i = dwLen; i < cwLen; i++)
+        codeWord[i] = dataWord[i];
+
+    printf("\n The  code word to be transmitted : ");
+    for (i = 0; i < cwLen; i++)
+        printf(" %d ", codeWord[i]);
+
+    printf("\n\n \t\t===== RECEIVER SIDE ===== \n\n");
+
+    printf("\n Enter the received codeword : ");
+    for (i = 0; i < cwLen; i++)
+        scanf("%d", &rCodeWord[i]);
+
+    divide(dwLen, gLen, rCodeWord, gen);
+
+    printf("\n Reminder is : ");
+    for (i = dwLen; i < cwLen; i++)
+        printf(" %d ", rCodeWord[i]);
+
+    error = 0;
+    for (i = dwLen; i < cwLen; i++)
     {
-        scanf("%d",&dataword[i]);
+        if (rCodeWord[i] == 1)
+            error = 1;
     }
-    printf("Enter the length of the generator:");
-    scanf("%d",&glen);
-    printf("Enter the generator:");
-    for ( j = 0; j < glen; j++)
-    {
-        scanf("%d",&gen[j]);
-    }
-    
-    cwlen=dwlen+(glen-1);
-
-    //append zeros
-    for ( i = dwlen; i < cwlen; i++)
-    {
-        dataword[i]=0;
-    }
-    
-    printf("\n\n Dataword with zeros appended:");
-
-    for ( i = 0; i < cwlen; i++)
-    {
-        printf("%d",dataword[i]);
-    }
-    
-    //copy the dataword as it is to codeword
-    for ( i = 0; i < cwlen; i++)
-    {   
-        codeword[i]=dataword[i];
-    }
-
-    //divide
-    divide(dwlen,glen,dataword,gen);
-
-    printf("\n\nThe remainder is:");
-    for ( i = dwlen; i < cwlen; i++)
-    {
-        printf("%d",dataword[i]);
-    }
-    
-    //subtract the remainder to the end of dataword
-    for(i=dwlen;i<cwlen;i++)
-        codeword[i]=dataword[i];
-    printf("\n\nThe codeword to the transmitted:");
-    for(i=0;i<cwlen;i++)
-        printf("%d",codeword[i]);
-    
-    printf("\n\nReceiver side\n\n");
-
-    printf("Enter the received codeword:");
-    for(i=0;i<cwlen;i++)   
-        scanf("%d",&rcodeword[i]);
-    
-    //divide
-    divide(dwlen,glen,rcodeword,gen);
-
-    printf("\n\nThe remainder is:");
-    for(i=dwlen;i<cwlen;i++)   
-        printf("%d",rcodeword[i]);
-
-    error=0;
-    for ( i = dwlen; i < cwlen; i++)
-    {
-        if(rcodeword[i]==1)
-            error=1;
-    }
-    if (error==1)
-        printf("\n\nThe received codeword has error\n\n");
+    if (error)
+        printf("\n Received code word has an error \n");
     else
-        printf("\n\nThe received codeword has no error\n\n");
-    
+        printf("\n Received code word has no error \n");
 }
 
-void divide(int dwlen,int glen,int data[20],int gen[20])
+void divide(int dwlen, int glen, int data[40], int gen[40])
 {
-    int i,j;
-    for ( i = 0; i < dwlen; i++)
+    int i, j;
+    for (i = 0; i < dwlen; i++)
     {
-        if (data[i]==0)
+        if (data[i] == 0)
         {
-            for ( j = 0; j < glen; j++)
+            for (j = 0; j < glen; j++)
             {
-                data[j+i]=data[j+i]^0;
+                data[j + i] = data[j + i] ^ 0;
             }
         }
         else
         {
-            for ( j = 0; j < glen; j++)
+            for (j = 0; j < glen; j++)
             {
-                data[j+i]=data[j+i]^gen[j];
+                data[j + i] = data[j + i] ^ gen[j];
             }
         }
-        
     }
-    
 }
